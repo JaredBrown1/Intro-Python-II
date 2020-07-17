@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player
 # Declare all the rooms
 
 room = {
@@ -38,6 +38,49 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player(input('Please enter your name:'), room['outside'])
+
+while True:
+    direction = input("Input the way you would like to go: ")
+
+    try:
+
+        if direction == "n":
+            if player.current_room.n_to:
+                player.current_room = player.current_room.n_to
+                print(f"{player.current_room.name}")
+                print(f"{player.current_room.description}")
+            else:
+                print("You cant go this way!")
+        elif direction == "e":
+            if player.current_room.e_to:
+                player.current_room = player.current_room.e_to
+                print(f"{player.current_room.name}")
+                print(f"{player.current_room.description}")
+            else:
+                print("You cant go this way!")
+        elif direction == "s":
+            if player.current_room.s_to:
+                player.current_room = player.current_room.s_to
+                print(f"{player.current_room.name}")
+                print(f"{player.current_room.description}")
+            else:
+                print("You cant go this way!")
+        elif direction == "w":
+            if player.current_room.w_to:
+                player.current_room = player.current_room.w_to
+                print(f"{player.current_room.name}")
+                print(f"{player.current_room.description}")
+            else:
+                print("You cant go this way!")
+        else:
+            print("Please select a valid direction")
+    except ValueError:
+        print("Please enter a cardinal direction such as n, s, e or w")
+        continue
+    # print(f"You chose: {direction}")
+    # print(player.current_room.name)
+
 
 # Write a loop that:
 #
